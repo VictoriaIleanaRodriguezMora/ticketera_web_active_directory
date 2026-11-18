@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block content %}<div class="card shadow-sm" style="max-width:800px"><div class="card-body p-4"><h1 class="h3">{{ titulo }}</h1><form method="post">{% csrf_token %}
+{% for campo in form %}<div class="mb-3"><label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label }}</label><div>{{ campo }}</div><div class="text-danger">{{ campo.errors }}</div></div>{% endfor %}
+<button class="btn btn-primary">Guardar</button> <a class="btn btn-outline-secondary" href="{% url 'ticket_list' %}">Cancelar</a></form></div></div>
+<style>input,select,textarea{display:block;width:100%;padding:.5rem;border:1px solid #ced4da;border-radius:.375rem}</style>{% endblock %}
