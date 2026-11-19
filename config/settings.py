@@ -46,3 +46,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'ticket_list'
 LOGOUT_REDIRECT_URL = 'login'
+
+AUTHENTICATION_BACKENDS = [
+    'config.ldap_backend.ActiveDirectoryBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+AD_HOST = os.environ.get('AD_HOST', '127.0.0.1')
+AD_PORT = int(os.environ.get('AD_PORT', '389'))
+AD_BASE_DN = 'DC=IFTS,DC=local'
+AD_SERVICE_USER = 'svc_ticketera@IFTS.local'
+AD_SERVICE_PASSWORD = os.environ.get('AD_SERVICE_PASSWORD', '')
